@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Account</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* 1. Moving Gradient Background Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animated-bg {
+            background: linear-gradient(-45deg, #2563eb, #7c3aed, #ec4899, #4f46e5);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        /* 2. Page Load Reveal Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal-card {
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.1s;
+        }
+
+        /* 3. Floating Label Animation Mechanics */
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label {
+            transform: translateY(-24px) scale(0.85);
+            color: #4f46e5;
+            background-color: #ffffff;
+            padding: 0 6px;
+        }
+
+        .input-group input:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        /* 4. Interactive Hover for Buttons */
+        .btn-animate {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-animate:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5);
+        }
+        .btn-animate:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+<body class="animated-bg min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-y-auto font-sans antialiased">
+
+    <div class="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+    <div class="absolute bottom-1/3 left-1/4 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style="animation-delay: 2.5s;"></div>
+
+    <div class="reveal-card w-full max-w-lg bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-6 sm:p-10 border border-white/20 z-10 my-8">
+        
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 mb-3 transition-transform duration-500 hover:scale-110">
+                <i class="fa-solid fa-user-plus text-lg"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Create Account</h2>
+            <p class="text-sm text-gray-500 mt-1">Get started with your free account today.</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mb-5">
+            <button class="flex items-center justify-center py-2.5 px-4 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 active:bg-gray-100 transition-all duration-150 hover:border-gray-300">
+                <i class="fa-brands fa-google text-red-500 mr-2"></i> Google
+            </button>
+            <button class="flex items-center justify-center py-2.5 px-4 border border-gray-200 rounded-xl text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 active:bg-gray-100 transition-all duration-150 hover:border-gray-300">
+                <i class="fa-brands fa-apple text-black mr-2 text-base"></i> Apple
+            </button>
+        </div>
+
+        <div class="relative flex items-center justify-center mb-6">
+            <div class="border-t border-gray-200 w-full absolute"></div>
+            <span class="bg-white px-3 text-xs text-gray-400 z-10 tracking-wider uppercase">Or register with email</span>
+        </div>
+
+        <form class="space-y-5" onsubmit="event.preventDefault(); alert('Registration validation successful!');">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="input-group relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-regular fa-user text-sm"></i>
+                    </div>
+                    <input type="text" id="firstname" placeholder=" " required
+                        class="block w-full pl-10 pr-4 py-3 bg-transparent border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none transition-all duration-200 ease-in-out">
+                    <label for="firstname" class="absolute left-10 top-3 text-sm text-gray-400 pointer-events-none transition-all duration-200 ease-in-out origin-left">First name</label>
+                </div>
+
+                <div class="input-group relative">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                        <i class="fa-regular fa-user text-sm"></i>
+                    </div>
+                    <input type="text" id="lastname" placeholder=" " required
+                        class="block w-full pl-10 pr-4 py-3 bg-transparent border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none transition-all duration-200 ease-in-out">
+                    <label for="lastname" class="absolute left-10 top-3 text-sm text-gray-400 pointer-events-none transition-all duration-200 ease-in-out origin-left">Last name</label>
+                </div>
+            </div>
+
+            <div class="input-group relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                    <i class="fa-regular fa-envelope text-sm"></i>
+                </div>
+                <input type="email" id="email" placeholder=" " required autocomplete="email"
+                    class="block w-full pl-10 pr-4 py-3 bg-transparent border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none transition-all duration-200 ease-in-out">
+                <label for="email" class="absolute left-10 top-3 text-sm text-gray-400 pointer-events-none transition-all duration-200 ease-in-out origin-left">Email Address</label>
+            </div>
+
+            <div class="input-group relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+                    <i class="fa-solid fa-lock text-sm"></i>
+                </div>
+                <input type="password" id="password" placeholder=" " required
+                    class="block w-full pl-10 pr-10 py-3 bg-transparent border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none transition-all duration-200 ease-in-out">
+                <label for="password" class="absolute left-10 top-3 text-sm text-gray-400 pointer-events-none transition-all duration-200 ease-in-out origin-left">Password</label>
+                <button type="button" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600 transition-colors">
+                    <i class="fa-regular fa-eye text-sm"></i>
+                </button>
+            </div>
+
+            <div class="space-y-1.5">
+                <div class="flex justify-between items-center text-xs text-gray-400 px-1">
+                    <span>Password strength:</span>
+                    <span class="text-indigo-600 font-medium">Strong</span>
+                </div>
+                <div class="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden flex gap-1">
+                    <div class="h-full w-1/3 bg-indigo-500 rounded-full transition-all duration-300"></div>
+                    <div class="h-full w-1/3 bg-indigo-500 rounded-full transition-all duration-300"></div>
+                    <div class="h-full w-1/3 bg-indigo-500 rounded-full transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <div class="flex items-start">
+                <input id="terms" type="checkbox" required
+                    class="mt-1 h-4 w-4 text-indigo-600 focus:ring-indigo-500/30 border-gray-300 rounded cursor-pointer transition duration-150">
+                <label for="terms" class="ml-2 block text-xs text-gray-500 cursor-pointer select-none leading-normal">
+                    I agree to the <a href="#" class="text-indigo-600 font-semibold hover:underline">Terms of Service</a> and <a href="#" class="text-indigo-600 font-semibold hover:underline">Privacy Policy</a>.
+                </label>
+            </div>
+
+            <button type="submit" 
+                class="btn-animate w-full flex justify-center py-3 px-4 border border-transparent rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md pt-3">
+                Register Account
+            </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-500 mt-6">
+            Already have an account? <a href="#" class="text-indigo-600 font-semibold hover:underline">Sign in Instead</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
